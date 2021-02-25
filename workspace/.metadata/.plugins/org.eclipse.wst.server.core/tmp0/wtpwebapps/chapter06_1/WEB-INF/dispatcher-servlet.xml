@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+ 
+	<!-- ~~.do 요청이 오면 서블릿으로 요청이 들어오고 HandlerMapping 을 통하여 @Controller 어노테이션을 사용한 클래스와
+	매핑을 하는데 이전에 자바의 MVC 에서는 우리가 요청이 들어올 때, 처리를 눈으로 볼 수 있었지만 이제는 DispatcherServlet 에서 모든걸
+	구현해 놓았기 때문에 우리가 요청을 받는 것을 눈으로 볼 수 없다. -->
+	
+	<!-- viewResolver - View 를 어떤 종류의 파일을 띄울것이냐 -->
+	<!-- InternalResourceViewResolver 은 jsp 전용으로 많이 사용된다 -->
+	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/sum/"></property> sum폴더에 있는
+		<property name="suffix" value=".jsp"></property> 확장자는 .jsp
+	</bean>
+
+	<bean id="sumController" class="com.controller.SumController"></bean> -->
+
+</beans>

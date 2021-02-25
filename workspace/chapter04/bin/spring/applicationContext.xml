@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- Connection Pool & DataSource -->
+	 <!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="c##java"></property>
+		<property name="password" value="bit"></property>
+		<property name="maxTotal" value="20"></property>
+		<property name="maxIdle" value="3"></property> 휴면상태를 몇개까지 만들것인지
+	</bean>  --><!-- 스프링에서는 데이터 소스를 지원하지 않아서,아파치로 부터 데이터 소스를 받아와야 한다.  --> 
+	
+	<!-- <bean id="dataSource" 
+		class="org.apache.commons.dbcp2.BasicDataSource" 
+		p:driverClassName="oracle.jdbc.driver.OracleDriver"
+		p:url="jdbc:oracle:thin:@localhost:1521:xe"
+		p:username="c##java"
+		p:password="bit"
+		p:maxTotal="20"
+		p:maxIdle="3"/> -->
+		
+		<context:property-placeholder location="classpath:spring/db.properties"/>
+		<!-- property 에서 ${}를 사용한 애들의 소스가 어디있는지 알려줘야한다. -->
+		
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="maxTotal" value="20"/>
+		<property name="maxIdle" value="3"/>
+	</bean>
+	
+	<!-- insert -->
+	<bean id="userInsertService" class="user.service.UserInsertService">
+		<property name="userDTO" ref="userDTO"></property>
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+	
+	<bean id="userDTO" class="user.bean.UserDTO"></bean>
+	
+	<!-- select -->
+	<bean id="userSelectService" class="user.service.UserSelectService">
+		<property name="userDAO" ref="userDAOImpl"></property>
+	</bean>
+	
+	<!-- Update -->
+	<bean id="userUpdateService" class="user.service.UserUpdateService">
+		<property name="userDAO" ref="userDAOImpl"/>
+	</bean>
+	
+	<!-- delete -->
+	<bean id="userDeleteService" class="user.service.UserDeleteService">
+		<property name="userDAO" ref="userDAOImpl"/>
+	</bean>
+	
+	 <!-- <bean id="userDAOImpl" class="user.dao.UserDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplate"></property>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>  -->
+	<!-- sql 에 대한 모든 처리를 템플릿이 하기 때문에 템플릿이 데이터 소스를 갖는다. -->
+	<!-- 또한 템플릿에 dataSource를 넣는 방법은 생성자를 통해서 삽입한다.(약속) -->
+	<!-- 여기서 문제점은 객체를 매번 DAO를 만들 때 마다 받아와야하므로 매번 private JdbcTemplate jdbcTemplate;
+	를 써 주어야 한다. -->
+	
+	
+	<bean id="userDAOImpl" class="user.dao.UserDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> 
+	<!-- 
+	NamedParameterJdbcDaoSupport 를 상속한 자식클래스의 객체를 생성할 때, property 로 setDataSource에
+	dataSource를 넘겨주게 되면 부모 객체에서 dataSource를 이요하여 스프링이 대신해서 DB 를 연동하는 모든 역할을 대신 해주게 된다.
+	 -->
+	 
+	<!-- dataSource 는 부모클래스(NamedParameterJdbcDaoSupport)의 setDataSource 에 들어가게 된다. --> 
+</beans>

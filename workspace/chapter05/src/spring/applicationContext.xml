@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:property-placeholder location="classpath:spring/db.properties"/>
+	<!-- property 에서 ${}를 사용한 애들의 소스가 어디있는지 알려줘야한다. -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- 나는 이제부터 트랜잭션 매니저를 사용할 것이다. -->
+	<!-- 트랜잭션을 알아서 관리할 수 있도록 꼭 이 문장을 써 주어야 트랜잭션 매니저가 트랜잭션을 처리한다.. -->
+		
+	<!-- 기존에 mybatis-config.xml 에 있던 커넥션 풀을 스프링에서 설정한다 -->
+	<!-- 스프링에서 sqlSession 객체를 만들어야 하기 때문에 dataSource 객체를 스프링에서 생성해야 하는 것이다. -->	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="maxTotal" value="20"/>
+		<property name="maxIdle" value="3"/>
+	</bean>
+
+	
+	<!-- SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:spring/mybatis-config.xml" /> <!-- spring/mybatis-config.xml 을 읽어와라 -->
+		<!-- <property name="mapperLocations" value="classpath:user/dao/userMapper.xml"/> -->
+		<!-- 기존에 mybatis-config 에서 사용해주던 <mapper>를 스프링에서 사용하는 방법,
+		커넥션 풀은 필수적으로 스프링으로 가져와야하지만 mapper는  mybatis-config 여기서 만들던, xml 에서 작성하던 선택권이있다. -->
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	
+	<!-- SqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"/>
+	</bean>
+	<!-- 기존에는 팩토리 클래스를 이용하여 sqlSession 을 만들었지만, 이제는 생성자에 참조만 해주면 된다. -->
+	
+	<!-- Transaction -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<constructor-arg ref="dataSource"/>
+	</bean>
+	<!-- 기존에 commit 과 같은 동작을 이제는 데이터소스를 가져와서 트랜잭션 매니저 객체가 알아서 해준다. -->
+	
+	
+	<!-- insert -->
+	<bean id="userInsertService" class="user.service.UserInsertService">
+		<property name="userDTO" ref="userDTO"></property>
+		<property name="userDAO" ref="userDAOMybatis"></property>
+	</bean>
+	
+	<bean id="userDTO" class="user.bean.UserDTO"></bean>
+	
+	<!-- select -->
+	<bean id="userSelectService" class="user.service.UserSelectService">
+		<property name="userDAO" ref="userDAOMybatis"></property>
+	</bean>
+	
+	<!-- Update -->
+	<bean id="userUpdateService" class="user.service.UserUpdateService">
+		<property name="userDAO" ref="userDAOMybatis"/>
+	</bean>
+	
+	<!-- delete -->
+	<bean id="userDeleteService" class="user.service.UserDeleteService">
+		<property name="userDAO" ref="userDAOMybatis"/>
+	</bean>
+	
+	
+	<bean id="userDAOMybatis" class="user.dao.UserDAOMybatis">
+		<property name="sqlSession" ref="sqlSession"/>
+	</bean> 
+	
+	
+</beans>

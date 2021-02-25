@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+		<!-- <context:annotation-config/> -->
+		<context:component-scan base-package="spring.di.ui, spring.di.entity"/>
+		
+<!-- <bean id="exam1" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="10"/>
+<bean id="exam2" class="spring.di.entity.NewlecExam" p:kor="20" p:eng="20"/> -->
+<bean id="exam" class="spring.di.entity.NewlecExam"/>
+	<!--
+	<constructor-arg name="kor" value="10"/>
+	<constructor-arg name="eng" value="20"/>
+	<constructor-arg name="com" value="30"/>
+	<constructor-arg name="math" value="40"/>
+</bean> -->
+
+<!-- <bean id = "console" class="spring.di.ui.InlineExamConsole">
+	<property name="exam" ref="exam"></property>
+</bean> -->
+
+<!-- 리스트 객체 생성 -->
+
+<!-- <bean id="exams" class="java.util.ArrayList">
+	<constructor-arg>
+		<list>
+			<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="1"/>
+			<ref bean="exam"/>
+		</list>
+	</constructor-arg>
+</bean> -->
+
+</beans>

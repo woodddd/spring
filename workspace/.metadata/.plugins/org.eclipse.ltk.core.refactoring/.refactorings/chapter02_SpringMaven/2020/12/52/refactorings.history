@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;spring.conf.StringConfiguration&apos; to &apos;SpringConfiguration&apos;&#x0D;&#x0A;- Original project: &apos;chapter02_SpringMaven&apos;&#x0D;&#x0A;- Original element: &apos;spring.conf.StringConfiguration&apos;&#x0D;&#x0A;- Renamed element: &apos;spring.conf.SpringConfiguration&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;StringConfiguration&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;spring.conf{StringConfiguration.java[StringConfiguration" matchStrategy="1" name="SpringConfiguration" qualified="false" references="true" similarDeclarations="false" stamp="1608690932706" textual="false" version="1.0"/>
+</session>

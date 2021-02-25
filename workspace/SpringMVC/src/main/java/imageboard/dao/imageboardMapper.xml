@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="imageboardSQL">
+ 
+ <insert id="imageboardWrite" parameterType="imageboard">
+ 	insert into imageboard values(seq_imageboard.nextval
+ 								,#{imageId}
+ 								,#{imageName}
+ 								,#{imagePrice}
+ 								,#{imageQty}
+ 								,#{imageContent}
+ 								,#{image1}
+ 								,sysdate)
+ </insert>
+ 
+ <select id="getImageboardList" parameterType="java.util.Map" resultType="imageboard">
+ 	select * from
+ 	(select rownum rn, tt.* from
+ 	(select*from imageboard order by seq desc)tt
+ 	)where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+ </select>
+ 
+ <select id="getImageboardTotalA" resultType="int">
+ 	select count(*) from imageboard
+ </select>
+ 
+ <select id="getImageboardView" parameterType="int" resultType="imageboard">
+ 	select * from imageboard where seq=#{seq}
+ </select>
+ 
+ <delete id="imageboardDelete" parameterType="java.util.Map">
+ 	delete from imageboard where seq in
+ 	
+ 	<!-- <c:foreach - jsp 문법 -->
+ 	
+ 	<!-- 아래의 문장은 xml 문법 -->
+ 	<!-- array를 받아와서 인덱스 0번부터 시작하여 (로 시작하고 나온 결과를 , 로 구분하여  )로 끝내라 (1,2,3) 과깉이 -->
+ 	<!-- array안에 있는걸 data에 하나하나씩 꺼내준다. 확장형 포문으로 생각하면됨 for(String data : 배열){  data } 랑 같음 -->
+ 	<foreach collection="array" item="data" index="i" open="(" close=")" separator=","> 
+ 		<!-- item을 빼고 #{array[i]} -->
+ 		#{data}
+ 	</foreach>
+ 	
+ 	
+ </delete>
+ 
+ 
+ </mapper>
+ 

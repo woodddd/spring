@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBeanImpl" class="sample01.MessageBeanImpl">
+		<constructor-arg>
+			<value>딸기</value>
+		</constructor-arg>
+		<property name="cost">
+			<value>5000</value>
+		</property>
+		<property name="qty" value="3"/>
+	</bean>
+	
+	<bean id="calcAdd" class="sample02.CalcAdd">
+		<constructor-arg value="25"/>
+		<constructor-arg value="36"/>
+	</bean>
+	
+	<bean id="calcMul" class="sample02.CalcMul">
+		<property name="x" value="25"/>
+		<property name="y" value="36"/>
+	</bean>
+	
+	<bean id="sungJukDTO" class="sample03.SungJukDTO">
+		<property name="name" value="홍길동"/>
+		<property name="kor" value="97"/>
+		<property name="eng" value="100"/>	
+		<property name="math" value="95"/>
+	</bean>
+	
+	<bean id="sungJukImpl" class="sample03.SungJukImpl">
+		<constructor-arg ref="sungJukDTO"/>
+	</bean>
+	
+	
+	<!-- sample05 -->
+	<bean id="helloSpring" class="sample05.HelloSpring"/>
+	
+	<!-- 입력 -->
+	<bean id="sungJukInput" class="sample05.SungJukInput" scope="prototype">
+		<property name="sungJukDTO2" ref="sungJukDTO2"/>
+		<property name="list" ref="arrayList"/>
+	</bean>
+	<!-- prototype을 잡아 준 이유는, 만약 sungJukInput이 싱글톤이라면, 싱글톤이 객체를 처음 생성해낼때 참조하던 주소값을
+	 계속참조하기 때문에  arrayList의 주소값이 scope="prototype" 로인해서 생성될 때마다 주소값이 변경되어도 
+	 sungJukInput 에 참조되는 ref= "arrayList" 의 주소값은 변경되지 않기 때문에 sungJukInput 에서도 
+	 scope="prototype" 를 잡아줘야 하는 것이다. -->
+	
+	<!-- 출력 -->
+	<bean id="sungJukOutput" class="sample05.SungJukOutput">
+		<property name="list" ref="arrayList"/>
+	</bean>
+	
+	<bean id="sungJukDTO2" class="sample05.SungJukDTO2" scope="prototype"/>
+	<!-- DTO 가 만약 싱글톤으로 잡힌다면, DTO를 사용할때 마다 값을 덮어쓰기 하여 list를 출력할 때 같은 결과가 여러번 나오게됨. -->
+	<bean id="arrayList" class="java.util.ArrayList"/>
+	
+	<!-- 수정 -->
+	<bean id="sungJukModify" class="sample05.SungJukModify">
+		<property name="list" ref="arrayList"/>
+	</bean>
+	
+	<!-- 삭제 -->
+	<bean id="sungJukDelete" class="sample05.SungJukDelete">
+		<property name="list" ref="arrayList"/>
+	</bean>
+	
+	
+	<!-- sample04 -->
+	
+	
+	<bean id="messageBeanImpl2" class="sample04.MessageBeanImpl">
+		<constructor-arg value="홍길동"/>
+		<property name="phone" value="010-123-1234"/>
+		<property name="outputter" ref="fileOutputter"/> <!-- Outputter 는 인터페이스 이기 때문에 자식 객체를 참조하게 해준다. --> 
+	</bean>
+	
+	<bean id="fileOutputter" class="sample04.FileOutputter">
+		<property name="filePath" value="C:/Spring/" />
+		<property name="fileName" value="result.txt"/>
+	</bean>
+		
+</beans>

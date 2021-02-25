@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBeanImpl" class="sample03_Advice.MessageBeanImpl"></bean>
+	
+	<bean id="loggingBeforeAdvice" class="sample03_Advice.LoggingBeforeAdvice"></bean> <!-- 부가기능을 담은 모듈 -->
+
+	<bean id="loggingAfterAdvice" class="sample03_Advice.LoggingAfterAdvice"></bean>
+
+	<bean id="loggingAroundAdvice" class="sample03_Advice.LoggingAroundAdvice"></bean>
+
+	<!-- 스프링이 제공하고 있는 proxy 객체를 생성하여 받아온다 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="messageBeanImpl"></property> <!-- 공통값을 넣어준 목표대상 ProxyFactoryBean클래스의 setTartget에 목표대상 객체를 담아준 것. -->
+		<!-- setTartget메소드에 ref 로 객체를 참조시키면 해당 참조시키는 객체 안에 있는 모든 메소드가 실행될 때, 메소드가 타겟이 된다. -->
+		<!-- messageBeanImpl 안의 모든 메소드들이 포인트컷이된다. -->
+		<property name="interceptorNames"> <!-- 낚아챈다. before 콜백메소드의 호출 이벤트 시점이된다. -->
+			<list> <!-- setInterceptorNames 는 객체값을 넣는다. -->
+				<value>loggingBeforeAdvice</value>
+				<value>loggingAfterAdvice</value>
+				<value>loggingAroundAdvice</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=chapter01/src&lt;sample04{Calc.java[Calc" modifiers="513" timestamp="1608533126069"/>
+<typeInfo handle="=chapter02/src&lt;sample02{Calc.java[Calc" modifiers="513" timestamp="1608618300018"/>
+<typeInfo handle="=chapter02/src&lt;sample03{SungJuk.java[SungJuk" modifiers="513" timestamp="1608625659773"/>
+<typeInfo handle="=chapter02/src&lt;sample04{MessageBean.java[MessageBean" modifiers="513" timestamp="1608786123754"/>
+<typeInfo handle="=chapter02/src&lt;sample01{MessageBean.java[MessageBean" modifiers="513" timestamp="1608612787115"/>
+<typeInfo handle="=chapter02/src&lt;sample04{Outputter.java[Outputter" modifiers="513" timestamp="1608786451055"/>
+<typeInfo handle="=chapter03/src&lt;sample01{MessageBean.java[MessageBean" modifiers="513" timestamp="1609130942580"/>
+<typeInfo handle="=chapter03/src&lt;sample03_Advice{MessageBean.java[MessageBean" modifiers="513" timestamp="1609142439617"/>
+<typeInfo handle="=chapter03/src&lt;sample02_Java{MessageBean.java[MessageBean" modifiers="513" timestamp="1609140208925"/>
+<typeInfo handle="=chapter04/src&lt;user.service{UserService.java[UserService" modifiers="513" timestamp="1609219097903"/>
+<typeInfo handle="=chapter04/src&lt;user.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1609306013522"/>
+<typeInfo handle="=chapter05/src&lt;user.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1609317449837"/>
+<typeInfo handle="=chapter06_SpringWebMaven/src=/optional=/true=/=/maven.pomderived=/true=/&lt;user.dao{UserDAO.java[UserDAO" modifiers="513" timestamp="1610430531563"/>
+<typeInfo handle="=SpringMVC/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;member.service{MemberService.java[MemberService" modifiers="513" timestamp="1610605625977"/>
+<typeInfo handle="=SpringMVC/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;member.dao{MemberDAO.java[MemberDAO" modifiers="513" timestamp="1610605655999"/>
+<typeInfo handle="=SpringMVC/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;board.service{BoardService.java[BoardService" modifiers="513" timestamp="1611020550755"/>
+<typeInfo handle="=SpringMVC/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;board.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1611021356078"/>
+<typeInfo handle="=SpringMVC/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;imageboard.service{ImageboardService.java[ImageboardService" modifiers="513" timestamp="1611194122427"/>
+</typeInfoHistroy>

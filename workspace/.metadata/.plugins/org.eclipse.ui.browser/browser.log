@@ -1,0 +1,66 @@
+
+1월 04, 2021 14:34:33.77 NEW SESSION
+1월 04, 2021 14:34:33.77 [0104/143433.762:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 04, 2021 17:36:57.65 [0104/173657.633:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 04, 2021 21:56:01.94 [0104/215601.937:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 05, 2021 14:26:36.68 NEW SESSION
+1월 05, 2021 14:26:36.68 [0105/142636.653:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 05, 2021 15:03:09.68 [0105/150309.667:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 06, 2021 14:52:49.74 NEW SESSION
+1월 06, 2021 14:52:49.75 [0106/145249.712:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 06, 2021 17:03:16.56 [0106/170316.551:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 06, 2021 22:26:58.17 [0106/222658.168:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 09, 2021 16:16:23.41 NEW SESSION
+1월 09, 2021 16:16:23.42 [0109/161623.338:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 11, 2021 14:28:10.93 NEW SESSION
+1월 11, 2021 14:28:10.95 [0111/142810.712:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 12, 2021 12:43:15.62 NEW SESSION
+1월 12, 2021 12:43:15.62 [0112/124315.468:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 12, 2021 21:02:53.67 [5900:16220:0112/210253.652:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+1월 12, 2021 21:02:53.99 [5900:16220:0112/210253.995:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+1월 12, 2021 21:03:45.83 [5900:16220:0112/210345.829:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+
+1월 13, 2021 15:28:32.15 NEW SESSION
+1월 13, 2021 15:28:32.15 [0113/152832.069:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 14, 2021 09:46:57.72 NEW SESSION
+1월 14, 2021 09:46:57.72 [0114/094657.688:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 15, 2021 09:54:27.97 NEW SESSION
+1월 15, 2021 09:54:27.97 [0115/095427.960:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 17, 2021 16:22:43.58 NEW SESSION
+1월 17, 2021 16:22:43.58 [0117/162243.562:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 18, 2021 09:59:04.97 NEW SESSION
+1월 18, 2021 09:59:04.97 [0118/095904.942:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 19, 2021 09:47:01.36 NEW SESSION
+1월 19, 2021 09:47:01.36 [0119/094701.348:ERROR:directory_reader_win.cc(43)] FindFirstFile: 지정된 경로를 찾을 수 없습니다. (0x3)
+
+1월 26, 2021 10:16:49.36 NEW SESSION
+1월 26, 2021 10:16:49.37 [19344:16784:0126/101649.366:ERROR:device_event_log_impl.cc(211)] [10:16:49.366] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+1월 26, 2021 14:05:03.78 [0126/140503.689:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\82109\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\97a228b9-a054-4a42-8656-bc0379135520: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 26, 2021 14:05:03.91 [0126/140503.774:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\82109\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\590b3fab-8905-4b69-ba52-ab6b4bf9b8a5: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 26, 2021 14:05:03.91 [0126/140503.784:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\82109\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\c5eb6ba2-ba33-49db-ad01-75d7b914be2a: 지정된 경로를 찾을 수 없습니다. (0x3)
+1월 26, 2021 15:26:19.23 [19344:16784:0126/152619.191:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)
+1월 26, 2021 15:53:00.60 [19344:16784:0126/155300.559:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)
+1월 26, 2021 15:53:01.06 [19344:16784:0126/155301.059:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)
+1월 26, 2021 16:00:32.33 [19344:16784:0126/160032.298:ERROR:CONSOLE(0)] "TypeError: Cannot read property 'isAnonymousInlineStyleSheet' of null", source:  (0)
+
+2월 07, 2021 22:20:58.25 NEW SESSION
+2월 07, 2021 22:20:58.25 [18880:7492:0207/222058.255:ERROR:device_event_log_impl.cc(211)] [22:20:58.255] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 07, 2021 22:37:00.27 [6676:22688:0207/223700.269:ERROR:device_event_log_impl.cc(211)] [22:37:00.268] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 07, 2021 22:37:00.27 [6676:22688:0207/223700.271:ERROR:device_event_log_impl.cc(211)] [22:37:00.270] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 08, 2021 02:45:12.39 [12604:14028:0208/024512.395:ERROR:device_event_log_impl.cc(211)] [02:45:12.394] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+
+2월 09, 2021 02:21:39.06 NEW SESSION
+2월 09, 2021 02:21:39.06 [19956:3380:0209/022139.057:ERROR:device_event_log_impl.cc(211)] [02:21:39.057] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 09, 2021 02:21:39.06 [19956:3380:0209/022139.059:ERROR:device_event_log_impl.cc(211)] [02:21:39.059] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 09, 2021 03:54:13.04 [9768:18996:0209/035413.042:ERROR:device_event_log_impl.cc(211)] [03:54:13.042] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+2월 09, 2021 03:55:40.49 [3156:8584:0209/035540.498:ERROR:device_event_log_impl.cc(211)] [03:55:40.498] USB: usb_device_handle_win.cc:1049 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)

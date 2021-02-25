@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="boardSQL">
+ 
+ <insert id="boardWrite" parameterType="java.util.Map">
+ 	insert into board values(seq_board.nextval
+ 								,#{id}
+ 								,#{name}
+ 								,#{email}
+ 								,#{subject}
+ 								,#{content}
+ 								,seq_board.currval
+ 								,0
+ 								,0
+ 								,0
+ 								,0
+ 								,0
+ 								,sysdate)
+ </insert>
+ 
+ <!-- 목록 -->
+   <select id="getBoardList" parameterType="java.util.Map" resultType="board">
+      select * from
+      (select rownum rn, tt.* from
+      (select * from board order by ref desc, step asc)tt
+      )where rn <![CDATA[ >= ]]> #{startNum} and rn <![CDATA[ <= ]]> #{endNum}
+   </select>
+
+ <!-- 총 글수 -->
+ <select id="getTotalA" resultType="int">
+ 	select count(*) from board
+ </select>
+ 
+ <!-- 작성한 글 확인 -->
+ <select id="getBoard" parameterType="int" resultType="board">
+ 	select * from board where seq=#{seq}
+ </select>
+ 
+ <!-- 조회수 증가 -->
+ <update id="hitUpdate" parameterType="int">
+ 	update board set hit = hit+1 where seq=#{seq}
+ </update>
+ 
+ <update id="boardModify" parameterType="java.util.Map">
+ 	update board set subject=#{subject }, content=#{content }, logtime=sysdate where seq=#{seq }
+ </update>	
+ 
+ <!-- PL/SQL 방식. 단 여러개의 sql문이 들어오면 한 문장이 끝날때 꼭 ;를 찍어줘야한다 -->
+ <delete id="boardDelete" parameterType="int">
+ 	begin
+ 		update board set reply = reply - 1 where seq = (select pseq from board where seq=#{seq});
+ 		
+ 		update board set subject=concat('[원글이 삭제된 답글]',subject) where pseq=#{seq};
+ 		
+ 		delete from board where seq=#{seq};
+ 	end;
+ 	
+ 	
+ </delete>
+
+ <!-- boardReply -->
+ <insert id="boardReply" parameterType="java.util.Map">
+ 	begin
+ 		update board set step=step+1 where ref=#{ref} and step>#{step};
+ 		
+ 		insert into board values(seq_board.nextval
+	                                 , #{id }
+	                                 , #{name }
+	                                 , #{email }
+	                                 , #{subject }
+	                                 , #{content }
+	                                 , #{ref }
+	                                 , #{lev }
+	                                 , #{step }
+	                                 , #{pseq }
+	                                 , 0
+	                                 , 0
+	                                 , sysdate);
+	     
+	     update board set reply=reply+1 where seq=#{pseq };                            
+	                                 
+ 	end;
+ </insert> 
+ <!-- boardReply -->
+ 
+ <!-- boardSearch -->
+ <select id="getBoardSearch" parameterType="java.util.Map" resultType="board">
+ 	
+	<![CDATA[
+      select * from
+      (select rownum rn, tt.* from
+      (select * from board where ${searchType} like '%'||#{keyword}||'%' order by ref desc, step asc)tt
+      )where rn>=#{startNum} and rn<=#{endNum}
+      ]]>
+
+ 	
+ </select>
+ 
+ <!-- 검색한 총 글 수 -->
+ <select id="getSearchTotalA" parameterType="java.util.Map" resultType="int">
+ 	select count(*) from board where ${searchType} like '%'||#{keyword}||'%'
+ </select>
+ 
+ </mapper>

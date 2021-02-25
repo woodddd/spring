@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="messageBeanImpl" class="sample01.MessageBeanImpl">
+		<property name="str" value="Have a nice day!!"/>
+	</bean>
+	
+	<bean id="loggingAdvice" class="sample01.LoggingAdvice"></bean>
+	
+	<!-- AOP -->
+	 <aop:config>
+	 <!-- <aop:pointcut> - 조인 포인트들 중에 실제로 부가기능을 적용할 것이 누구냐 -->
+		<aop:pointcut 
+		expression="execution(public void sample01.MessageBeanImpl.*Before(..))" 
+		id="beforeMethod"/> 
+		<!-- pointcut - 누구에게 집어넣을거냐  excution - 어떤시점에 넣을거냐 (execution(public void sample01.MessageBeanImpl.*Before(..)) 해당 메소드가 실행될 떄  메소드를 넣을건데, * 모든글자로 시작해서 Before 로 끝나는 메소드가 실행될때가 시점이된다. 뒤에 나온 .. 은 매개변수 개수를 자유롭게 사용할 때 쓴다. - -->
+		
+		<aop:pointcut
+		expression="execution(public * *.*.*After(..))"
+		id="afterMethod"/><!-- 자료형 타입에 * 을 써주면 자료형을 상관하지 않겠다는 말이다.패키지명도 동일.클래스명도 동일. -->
+		
+		<aop:pointcut 
+		expression="execution(public * *.*.*Print(..))" 
+		id="aroundMethod"/>
+		
+		<aop:aspect ref="loggingAdvice">  <!--aop:aspect - 공통 모듈이 누구냐 -->
+			<aop:before method="beforeTrace" pointcut-ref="beforeMethod"/> <!-- method= 어떤 메소드를 before에 넣을거냐? pointcut-ref=누가 포인트 컷이냐. 결국 대상이된다. 그래서 method 를 넣어줄 대상을 쓰느것이다. -->
+			<aop:after method="afterTrace" pointcut-ref="afterMethod"/>
+			<aop:around method="trace" pointcut-ref="aroundMethod"/>
+		</aop:aspect>
+	</aop:config>
+
+	
+	
+</beans>
